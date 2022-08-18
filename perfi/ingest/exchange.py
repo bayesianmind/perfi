@@ -423,7 +423,7 @@ class GeminiImporter:
             str = str.replace("(", "")
             str = str.replace(")", "")
             str = re.sub("[^0-9.]", "", str)
-            return Decimal(str) * sign * (Decimal(10) ** exponent)
+            return Decimal(str) * sign * (Decimal(10) ** exponent).normalize()
 
         csv_file = self.xls_to_csv(xls_file)
         reader = csv.DictReader(io.StringIO(csv_file))
